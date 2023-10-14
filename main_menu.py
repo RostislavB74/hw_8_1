@@ -1,8 +1,13 @@
+
+
 from connect import connect_db
+
+
 def menu():
 
-    commands = [" 1  - Create DB "," 2  - Connect DB ", " 3  - Load to DB ",
-                " 4  - Output from DB ", " 5  - Create ", " 6  - Find ", " 7  - Update ", " 8  - Delete ", " 0  - Exit"]
+    commands = [" 1  - Create DB ", " 2  - Connect DB ", " 3  - Load to DB ",
+                " 4  - Output from DB ", " 5  - Create ", " 6  - Find ",
+                " 7  - Update ", " 8  - Delete ", " 0  - Exit"]
 
     while True:
 
@@ -19,26 +24,26 @@ def menu():
         if user_input == '1':
             print("_"*30)
             print("|{:^30}|".format("✨ Create DB! ✨"))
-            print("|"+"_"*30 + "|")
-
-            create_db()
+            print("|"+"_"*28 + "|")
+            print('В розробці')
+            # create_db()
 
         elif user_input == '2':
             print("_"*30)
-            print("|{:^30}|".format("✨ Connect DB! ✨"))
-            print("|"+"_"*30 + "|")
-            name_db= input(("|>>> Inpute name DB ")) 
-            print (connect_db(name_db))
+            print("|{:^28}|".format("✨ Connect DB! ✨"))
+            print("|"+"_"*29 + "|")
+            name_db = input(("|>>> Inpute name DB "))
+            print(connect_db(name_db))
         elif user_input == '3':
             print("_"*30)
             print("|{:^30}|".format("✨ Load date to DB! ✨"))
-            print("|"+"_"*30 + "|")
+            print("|"+"_"*28 + "|")
             result = load_to_db()
             print(result)
         elif user_input == '4':
             print("_"*30)
             print("|{:^30}|".format("✨ Output date from DB! ✨"))
-            print("|"+"_"*30 + "|")
+            print("|"+"_"*28 + "|")
 
             output_from_db()
         elif user_input == '5':
@@ -66,10 +71,11 @@ def menu():
 
             delete_doc()
         elif user_input == '0' or user_input.lower() == "exit":
+
             print('\nGoodbye!\n')
             break
         else:
-            print("_"*29)
+            print("_"*30)
             print("|{:^30}|".format("Wrong number... Try again..."))
             print("|"+"_"*30 + "|")
 
