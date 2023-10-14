@@ -7,7 +7,7 @@ from create_db_load_date import create_db_load_date
 def menu():
 
     commands = [" 1  - Create DB and load date",
-                " 2  - Connect DB ",
+                " 2  - Check DB connection",
                 " 3  - Load to DB ",
                 " 4  - Output from DB ",
                 " 5  - Create ",
