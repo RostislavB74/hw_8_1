@@ -16,9 +16,8 @@ def connect_db(name_db):
     else:
         print(f"База данных {database_name} не существует.")
 
-    # Закрываем соединение
-    # client.close()
+    client.close()
 
 
 if __name__ == '__main__':
-    print(connect_db('hw8'))
+    print(connect_db('hw8_1'))
