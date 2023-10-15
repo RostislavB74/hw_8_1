@@ -7,7 +7,7 @@ from pymongo.server_api import ServerApi
 
 client = MongoClient("mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/proverka?retryWrites=true&w=majority",
                      server_api=ServerApi('1'))
-db = client.test
+db = client.proverka
 
 parser = argparse.ArgumentParser(description='proverka APP')
 parser.add_argument('--action', help='Command: create, update, find, remove')
@@ -64,6 +64,7 @@ def remove_cat(_id):
 
 
 def main():
+
     try:
         match action:
             case 'create':
@@ -80,6 +81,7 @@ def main():
                 pprint(r.deleted_count)
             case _:
                 pprint('Unknown command')
+
     except ExceptValidation as err:
         pprint(err)
 

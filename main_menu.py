@@ -1,4 +1,6 @@
+
 from connect import connect_db
+from find import find_db
 from create_db_load_date import create_db_load_date
 
 
@@ -9,7 +11,7 @@ def menu():
                 " 3  - Load to DB ",
                 " 4  - Output from DB ",
                 " 5  - Create ",
-                " 6  - Find ",
+                " 6  - Find all date DB ",
                 " 7  - Update ",
                 " 8  - Delete ",
                 " 0  - Exit"
@@ -63,8 +65,9 @@ def menu():
             print("_"*30)
             print("|{:^30}|".format("✨ Find date! ✨"))
             print("|"+"_"*30 + "|")
-            print('В розробці')
-            # find_date()
+            name_db = input(("|>>> Input name DB "))
+            name_cal = input(("|>>> Input name callection "))
+            print(find_db(name_db, name_cal))
         elif user_input == '7':
             print("_"*30)
             print("|{:^30}|".format("✨ Update date! ✨"))
