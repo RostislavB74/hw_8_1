@@ -1,5 +1,3 @@
-
-
 from connect import connect_db
 from create_db_load_date import create_db_load_date
 
