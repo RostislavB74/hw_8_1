@@ -38,7 +38,7 @@ def menu():
 
         elif user_input == '2':
             print("_"*30)
-            print("|{:^28}|".format("✨ Connect DB! ✨"))
+            print("|{:^27}|".format("✨ Connect DB! ✨"))
             print("|"+"_"*29 + "|")
             name_db = input(("|>>> Input name DB "))
             print(connect_db(name_db))
