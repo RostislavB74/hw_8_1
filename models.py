@@ -1,29 +1,43 @@
 from mongoengine import connect
-from mongoengine import Document, StringField, ListField, CASCADE, ReferenceField
+from mongoengine import Document, StringField, ListField, CASCADE, ReferenceField, DateTimeField
 
-connect(host="mongodb+srv://userweb9:<password>@krabaton.5mlpr.gcp.mongodb.net/web9", ssl=True)
-
-
-class User(Document):
-    email = StringField(required=True)
-    first_name = StringField(max_length=50)
-    last_name = StringField(max_length=50)
+connect(
+    host=f"mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/proverka", ssl=True)
 
 
-class Post(Document):
-    title = StringField(max_length=120, required=True)
-    author = ReferenceField(User, reverse_delete_rule=CASCADE)
+class Authors(Document):
+    fullname = StringField(required=True)
+    born_date = StringField()
+    born_location = StringField(max_length=50)
+    description = StringField()
+
+
+class Quotes(Document):
     tags = ListField(StringField(max_length=30))
-    meta = {'allow_inheritance': True}
+    author = ReferenceField(Authors, reverse_delete_rule=CASCADE)
+    quota = StringField()
 
 
-class TextPost(Post):
-    content = StringField()
+# class TextQuotes(Quotes):
+#     content = StringField()
 
 
-class ImagePost(Post):
-    image_path = StringField()
+# class ImageQuotes(Quotes):
+#     image_path = StringField()
 
 
-class LinkPost(Post):
-    link_url = StringField()
+# class LinkQuotes(Quotes):
+#     link_url = StringField()
+
+
+def models_db(name_db):
+    connect(
+        host=f"mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/{name_db}", ssl=True)
+    """uri = f"mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/{name_db}?retryWrites=true&w=majority"
+
+        client = MongoClient(uri, server_api=ServerApi('1'))
+        db = client[name_db]"""
+
+
+if __name__ == '__main__':
+    models_db()

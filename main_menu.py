@@ -66,8 +66,8 @@ def menu():
             print("|{:^30}|".format("✨ Find date! ✨"))
             print("|"+"_"*30 + "|")
             name_db = input(("|>>> Input name DB "))
-            name_cal = input(("|>>> Input name callection "))
-            print(find_db(name_db, name_cal))
+            name_col = input(("|>>> Input name collection "))
+            print(find_db(name_db, name_col))
         elif user_input == '7':
             print("_"*30)
             print("|{:^30}|".format("✨ Update date! ✨"))

@@ -3,6 +3,7 @@ import os
 import shutil
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
+from models import Authors, Quotes
 
 input_directory = 'input'
 arch_directory = 'arch'
