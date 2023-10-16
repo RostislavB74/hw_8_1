@@ -3,7 +3,7 @@ import os
 import shutil
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-from models import Authors, Quotes
+
 
 input_directory = 'input'
 arch_directory = 'arch'
@@ -25,12 +25,11 @@ def create_db_load_date(name_db):
             with open(os.path.join(input_directory, file), "r", encoding="utf-8") as f:
                 file_data = json.load(f)
                 collection.insert_many(file_data)
-                print(file)
-            shutil.move(f'input/{file}', f'arch/{file}')
+                shutil.move(f'input/{file}', f'arch/{file}')
 
     client.close()
     return 'OK'
 
 
 if __name__ == '__main__':
-    create_db_load_date("")
+    create_db_load_date("hw22111")

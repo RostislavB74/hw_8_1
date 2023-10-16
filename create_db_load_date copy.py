@@ -19,31 +19,25 @@ def create_db_load_date(name_db):
 
     for file in os.listdir(input_directory):
         if file.endswith(".json"):
-            collection_name = file.split('.')[0]
-            print(collection_name)
-            collection = db[collection_name]
+            if file.startswith("authors"):
+                collection_name = file.split('.')[0]
+                collection = db[collection_name]
+                with open(os.path.join(input_directory, file), "r", encoding="utf-8") as af:
+                    file_date = json.load(af)
+                    collection.insert_many(file_date)
+            if file.startswith("quotes"):
+                with open(os.path.join(input_directory, file), "r", encoding="utf-8") as qf:
+                    file_date = json.load(qf)
+                    for quote_date in file_date:
+                        author_fullname = quote_date['author']
+                        quote_date = Authors.objects(
+                            fullname=author_fullname).first()
+                        # del quote_date['author']
+                        collection.insert_many(file_date)
 
-        # with open(os.path.join(input_directory, file), "r", encoding="utf-8") as af:
-        #     authors_date = json.load(af)
-
-        # with open("arch/quotes.json", "r", encoding="utf-8") as qf:
-        #     quotes_date = json.load(qf)
-
-        # for author_date in authors_date:
-        #     author = Authors(**author_date)
-        #     author.save()
-
-        # for quote_date in quotes_date:
-        #     author_fullname = quote_date['author']
-        #     author = Authors.objects(fullname=author_fullname).first()
-
-        # del quote_date['author']
-
-        # quote = Quotes(**quote_date, author=author)
-        # quote.save()
-        with open(os.path.join(input_directory, file), "r", encoding="utf-8") as f:
-            file_data = json.load(f)
-            collection.insert_many(file_data)
+    # with open(os.path.join(input_directory, file), "r", encoding="utf-8") as f:
+    #         file_data = json.load(f)
+    #         collection.insert_many(file_data)
             print(file)
         shutil.move(f'input/{file}', f'arch/{file}')
 
@@ -52,4 +46,4 @@ def create_db_load_date(name_db):
 
 
 if __name__ == '__main__':
-    create_db_load_date("ddfdfd")
+    create_db_load_date("test1111")
