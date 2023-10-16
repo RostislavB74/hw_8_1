@@ -8,12 +8,12 @@ def menu():
 
     commands = [" 1  - Create DB and load date",
                 " 2  - Check DB connection",
-                " 3  - Load to DB ",
-                " 4  - Output from DB ",
-                " 5  - Create ",
+                " 3  - Load to DB в розробці ",
+                " 4  - Output from DB в розробці ",
+                " 5  - Create в розробці",
                 " 6  - Find all date DB ",
-                " 7  - Update ",
-                " 8  - Delete ",
+                " 7  - Update в розробці",
+                " 8  - Delete в розробці ",
                 " 0  - Exit"
                 ]
 

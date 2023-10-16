@@ -1,17 +1,24 @@
-from models import Post, LinkPost, ImagePost, TextPost, User
+import json
+
+from models import Authors, Quotes
+
 
 if __name__ == '__main__':
-    posts = Post.objects()
+    with open("arch/authors.json", "r", encoding="utf-8") as af:
+        authors_date = json.load(af)
 
-    for post in posts:
-        print(post.to_mongo().to_dict())
-    for post in Post.objects(tags='mongodb'):
-        print(post.title)
+    with open("arch/quotes.json", "r", encoding="utf-8") as qf:
+        quotes_date = json.load(qf)
 
-    users = User.objects()
-    for user in users:
-        print(user.to_mongo().to_dict())
+    for author_date in authors_date:
+        author = Authors(**author_date)
+        author.save()
 
-    posts = Post.objects(pk='640790cf89910665c0959f82')
-    for post in posts:
-        print(post.to_mongo().to_dict())
+    for quote_date in quotes_date:
+        author_fullname = quote_date['author']
+        author = Authors.objects(fullname=author_fullname).first()
+
+        del quote_date['author']
+
+        quote = Quotes(**quote_date, author=author)
+        quote.save()
