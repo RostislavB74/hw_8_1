@@ -24,4 +24,4 @@ def models_db(name_db):
 
 
 if __name__ == '__main__':
-    models_db()
+    models_db('hw81')

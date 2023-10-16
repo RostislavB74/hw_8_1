@@ -22,7 +22,7 @@ def create_db_load_date(name_db):
             collection_name = file.split('.')[0]
             collection = db[collection_name]
 
-            with open(os.path.join(input_directory, file)) as f:
+            with open(os.path.join(input_directory, file), "r", encoding="utf-8") as f:
                 file_data = json.load(f)
                 collection.insert_many(file_data)
                 print(file)
