@@ -2,7 +2,7 @@
 from connect import connect_db
 from find import find_db
 from create_db_load_data import create_db_load_date
-from find_quote import find_menu
+from find_quote import find_quote
 
 
 def menu():
@@ -87,7 +87,7 @@ def menu():
             print("|{:^30}|".format("✨ Find Quotes! ✨"))
             print("|"+"_"*30 + "|")
             
-            print(find_menu())
+            print(find_quote())
         elif user_input == '0' or user_input.lower() == "exit":
             print('\nGoodbye!\n')
             break
