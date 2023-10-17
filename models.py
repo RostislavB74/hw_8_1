@@ -2,7 +2,7 @@ from mongoengine import connect
 from mongoengine import Document, StringField, ListField, CASCADE, ReferenceField, DateTimeField
 
 connect(
-    host=f"mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/proverka", ssl=True)
+    host=f"mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/hw81", ssl=True)
 
 
 class Authors(Document):

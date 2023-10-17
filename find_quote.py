@@ -1,30 +1,27 @@
 import json
 import re
 import redis
-import pymongo
 
 from mongoengine import connect
 
 from models import Authors, Quotes
-# from connect import uri
+# from connect import connect_db
 
 # Connect to MongoDB
-client = pymongo.MongoClient(
-    "mongodb+srv://user_python:54321@cluster0.yypw24v.mongodb.net/hw111?retryWrites=true&w=majority")
-
+# uri = connect_db('hw81')
+# connect(host=uri)
 
 # Connect to Redis
-redis_client = redis.StrictRedis(
-    host='localhost', port=6379, password=None, decode_responses=True)
+redis_client = redis.StrictRedis(host='localhost', port=6379, password=None, decode_responses=True)
 
 
 def search_by_tag(tag):
-    tags_regex = re.compile(f"^{tag}", re.IGNORECASE)
+    tags_regex=re.compile(f"^{tag}", re.IGNORECASE)
     # Check if result is in cache
     cached_result = redis_client.get(f'tag:{tags_regex}')
     if cached_result:
         return json.loads(cached_result)
-
+    
     quotes = Quotes.objects(tags=tags_regex)
     result = [(quote.author.fullname, quote.quote) for quote in quotes]
     # Cache the result in Redis
@@ -42,9 +39,8 @@ def search_by_tags(tags_search):
     redis_client.set(f'tags:{tags_search}', json.dumps(result))
     return result
 
-
 def search_by_author(author_name):
-    author_regex = re.compile(f"^{author_name}", re.IGNORECASE)
+    author_regex=re.compile(f"^{author_name}", re.IGNORECASE)
     cached_result = redis_client.get(f'tag:{author_regex}')
     if cached_result:
         return json.loads(cached_result)

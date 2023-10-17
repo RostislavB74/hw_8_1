@@ -14,4 +14,4 @@ def find_db(name_db, name_col):
 
 
 if __name__ == '__main__':
-    find_db("proverka", 'cats')
+    find_db("test222", 'quotes')

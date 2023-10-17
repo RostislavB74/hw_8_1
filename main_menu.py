@@ -2,18 +2,20 @@
 from connect import connect_db
 from find import find_db
 from create_db_load_data import create_db_load_date
+from find_quote import find_menu
 
 
 def menu():
 
     commands = [" 1  - Create DB and load date",
                 " 2  - Check DB connection",
-                " 3  - Load to DB в розробці ",
-                " 4  - Output from DB в розробці ",
+                " 3  - Load  в розробці ",
+                " 4  - Output в розробці ",
                 " 5  - Create в розробці",
                 " 6  - Find all date DB ",
                 " 7  - Update в розробці",
                 " 8  - Delete в розробці ",
+                " 9  - Find Quote ",
                 " 0  - Exit"
                 ]
 
@@ -80,8 +82,13 @@ def menu():
             print("|"+"_"*30 + "|")
             print('В розробці')
             # delete_doc()
+        elif user_input == '9':
+            print("_"*30)
+            print("|{:^30}|".format("✨ Find Quotes! ✨"))
+            print("|"+"_"*30 + "|")
+            
+            print(find_menu())
         elif user_input == '0' or user_input.lower() == "exit":
-
             print('\nGoodbye!\n')
             break
         else:
