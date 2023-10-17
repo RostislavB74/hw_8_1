@@ -2,14 +2,8 @@ import json
 import re
 import redis
 
-from mongoengine import connect
 
 from models import Authors, Quotes
-# from connect import connect_db
-
-# Connect to MongoDB
-# uri = connect_db('hw81')
-# connect(host=uri)
 
 # Connect to Redis
 redis_client = redis.StrictRedis(host='localhost', port=6379, password=None, decode_responses=True)
@@ -56,12 +50,12 @@ def search_by_author(author_name):
 
 while True:
 
-    instruction = "Give me the command. Ex.: 'name:Steve Martin' or 'tag:life' or 'tags:life,live'. Type 'exit' to exit"
+    instruction = "Give me the command. Ex.: 'name:Steve Martin' or 'tag:life' or 'tags:life,live'. Type '0' to exit"
     print(instruction)
     try:
         user_input_command = input(">>>").strip()
 
-        if user_input_command == "exit":
+        if user_input_command == "0":
             print("Program closed")
             break
         user_command = user_input_command.split(":")
